@@ -9,8 +9,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  test:
-    name: Install dependencies and run tests
+  test-and-build:
     runs-on: ubuntu-latest
 
     steps:
@@ -31,3 +30,6 @@ jobs:
 
       - name: Run API tests
         run: python -m pytest -v
+
+      - name: Build Docker image
+        run: docker build -t used-car-api:latest .
